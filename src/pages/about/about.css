@@ -1,0 +1,19 @@
+/* Custom bullet for services */
+@keyframes bullet-glow {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; text-shadow: 0 0 8px #22d3ee; }
+    100% { opacity: 0.8; }
+  }
+  
+  .bg-gray-800\/50:hover > div:first-child {
+    animation: bullet-glow 1.5s infinite;
+  }
+  
+  /* Map hover effect */
+  iframe {
+    transition: transform 0.3s ease;
+  }
+  
+  iframe:hover {
+    transform: scale(1.05);
+  }

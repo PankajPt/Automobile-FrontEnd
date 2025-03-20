@@ -1,0 +1,46 @@
+.hover\:shadow-glow:hover {
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.5), 
+                0 0 15px rgba(192, 132, 252, 0.3);
+  }
+  
+  /* Add subtle animation to package cards */
+  .group:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+  }
+  
+  /* Gradient border animation */
+  @keyframes border-glow {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+  }
+  
+  /* .group:hover::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #22d3ee, #a855f7);
+    border-radius: inherit;
+    z-index: -1;
+    animation: border-glow 1.5s infinite;
+  } */
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .group-hover\:animate-\[shimmer_2s_infinite\] {
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Glowing text effect */
+  .hover\:text-glow:hover {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  /* Smooth background transition */
+  .bg-gradient-to-r {
+    transition: background 0.4s ease;
+  }
