@@ -1,122 +1,205 @@
-import { motion } from 'framer-motion';
-import { NavLink } from 'react-router-dom';
-import './offers.css'
+import { FaCheck, FaCarSide, FaShieldAlt, FaCertificate   } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
-const Offers = () => {
-  const packages = [
-    {
-      title: 'Basic Service',
-      price: '$49.99',
-      features: ['Oil Change', 'Brake Inspection', 'Battery Check'],
-      bg: 'from-gray-800 to-gray-900',
-      border: 'border-cyan-400',
-      hoverGlow: 'hover:shadow-cyan-500/30'
-    },
-    {
-      title: 'Standard Service',
-      price: '$79.99',
-      features: ['Basic Service +', 'Tire Rotation', 'Fluid Top-up'],
-      bg: 'from-purple-900/80 to-gray-900',
-      border: 'border-purple-400',
-      hoverGlow: 'hover:shadow-purple-500/30'
-    },
-    {
-      title: 'Comprehensive Service',
-      price: '$129.99',
-      features: ['Standard Service +', 'Engine Diagnostic', 'AC Check'],
-      bg: 'from-cyan-900/50 to-gray-900',
-      border: 'border-cyan-300',
-      hoverGlow: 'hover:shadow-cyan-400/30'
-    }
-  ];
+const offerSet = [
+  {
+    title: 'Basic Service',
+    price: '₹3000',
+    features: ['Oil Change', 'Brake Inspection', 'Battery Check'],
+    bg: 'from-gray-800 to-gray-900',
+    border: 'border-cyan-400',
+    hoverGlow: 'hover:shadow-cyan-500/30'
+  },
+  {
+    title: 'Standard Service',
+    price: '₹4000',
+    features: ['Basic Service +', 'Tire Rotation', 'Fluid Top-up'],
+    bg: 'from-purple-900/80 to-gray-900',
+    border: 'border-purple-400',
+    hoverGlow: 'hover:shadow-purple-500/30'
+  },
+  {
+    title: 'Comprehensive Service',
+    price: '₹5000',
+    features: ['Standard Service +', 'Engine Diagnostic', 'AC Check'],
+    bg: 'from-cyan-900/50 to-gray-900',
+    border: 'border-cyan-300',
+    hoverGlow: 'hover:shadow-cyan-400/30'
+  }
+];
 
+// export default function Offers() {
+//   return (
+//     <section className="min-h-screen bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+//       <div className="max-w-7xl mx-auto">
+//         {/* Page Header */}
+//         <div className="text-center mb-16">
+//           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+//             Maintenance Packages
+//           </h1>
+//           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+//             Choose the perfect service package for your vehicle from our curated
+//             maintenance plans
+//           </p>
+//         </div>
+
+//         {/* Pricing Grid */}
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+//           {offerSet.map((offer, index) => (
+//             <div
+//               key={index}
+//               className={`relative bg-gradient-to-br ${offer.bg} rounded-2xl p-8 shadow-xl ${offer.hoverGlow} hover:shadow-2xl transition-all duration-300 border-2 ${offer.border}`}
+//             >
+//               {/* Popular Badge */}
+//               {index === 1 && (
+//                 <div className="absolute top-0 right-0 bg-purple-500 text-white px-4 py-1 rounded-bl-xl rounded-tr-xl text-sm font-medium">
+//                   Most Popular
+//                 </div>
+//               )}
+
+//               {/* Package Header */}
+//               <div className="mb-8">
+//                 <FaCarSide className="text-3xl text-white mb-4" />
+//                 <h2 className="text-2xl font-bold text-white mb-2">
+//                   {offer.title}
+//                 </h2>
+//                 <div className="flex items-baseline">
+//                   <span className="text-4xl font-extrabold text-white">
+//                     {offer.price}
+//                   </span>
+//                   <span className="ml-2 text-gray-300">/service</span>
+//                 </div>
+//               </div>
+
+//               {/* Features List */}
+//               <ul className="space-y-4 mb-12">
+//                 {offer.features.map((feature, fIndex) => (
+//                   <li
+//                     key={fIndex}
+//                     className="flex items-center text-gray-200"
+//                   >
+//                     <FaCheck className="flex-shrink-0 text-green-400 mr-3" />
+//                     <span className="text-base">{feature}</span>
+//                   </li>
+//                 ))}
+//               </ul>
+
+//               {/* CTA Button */}
+//               <Link
+//                 to="/booking"
+//                 className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-100 transition-colors duration-200"
+//               >
+//                 Choose Plan
+//               </Link>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Additional Info */}
+//         <div className="mt-16 text-center text-gray-300">
+//           <p className="text-sm">
+//             All packages include free 30-day warranty • 24/7 support • GST included
+//           </p>
+//           <div className="mt-6 flex items-center justify-center space-x-4">
+//             <FaCheck className="text-green-400" />
+//             <span className="text-sm">100% Satisfaction Guarantee</span>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+export default function Offers() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-20 px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-7xl mx-auto"
-      >
-        <h1 className="text-4xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-          Car Service Offers
-        </h1>
+    <section className="min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Page Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            Maintenance Packages
+          </h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Choose the perfect service package for your vehicle from our curated
+            maintenance plans
+          </p>
+        </div>
 
+        {/* Trust Badges - Added to match Packages page */}
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
+          <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-sm">
+            <FaShieldAlt className="text-blue-600" />
+            <span className="text-sm font-medium">1-Year Warranty</span>
+          </div>
+          <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-sm">
+            <FaCertificate className="text-green-600" />
+            <span className="text-sm font-medium">Certified Experts</span>
+          </div>
+        </div>
+
+        {/* Pricing Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {packages.map((pkg, index) => (
-            <motion.div
+          {offerSet.map((offer, index) => (
+            <div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ 
-                y: -10,
-                transition: { type: 'spring', stiffness: 300 }
-              }}
-              className={`relative bg-gradient-to-br ${pkg.bg} rounded-xl p-6 sm:p-8 border-2 ${pkg.border} shadow-xl ${pkg.hoverGlow} transition-all duration-300 group hover:z-10`}
+              className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-2 ${offer.border}`}
             >
-              {/* Animated Border */}
-              <div className="absolute inset-0 rounded-xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-20 group-hover:animate-[shimmer_2s_infinite]"></div>
-              </div>
-              
-              <div className="relative z-10">
-                <h2 className="text-2xl font-bold text-gray-100 mb-4 group-hover:text-cyan-100 transition-colors">
-                  {pkg.title}
-                </h2>
-                
-                <motion.div 
-                  className="mb-8"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <span className="text-4xl font-bold bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent">
-                    {pkg.price}
-                  </span>
-                </motion.div>
-
-                <div className="space-y-4 mb-8">
-                  {pkg.features.map((feature, i) => (
-                    <motion.div 
-                      key={i} 
-                      className="flex items-center text-gray-300 group-hover:text-white transition-colors"
-                      initial={{ x: 10 }}
-                      whileInView={{ x: 0 }}
-                      whileHover={{ x: 5 }}
-                    >
-                      <motion.svg 
-                        className="w-5 h-5 mr-2 text-cyan-400" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                        whileHover={{ scale: 1.2 }}
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </motion.svg>
-                      {feature}
-                    </motion.div>
-                  ))}
+              {/* Popular Badge */}
+              {index === 1 && (
+                <div className="absolute top-0 right-0 bg-orange-500 text-white px-4 py-1 rounded-bl-xl rounded-tr-xl text-sm font-medium">
+                  Most Popular
                 </div>
+              )}
 
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    background: `linear-gradient(to right, #22d3ee, ${pkg.border.replace('border-', '#')})`,
-                    boxShadow: `0 0 25px ${pkg.hoverGlow.split('/')[0].replace('hover:shadow-', '#')}80`
-                  }}
-                >
-                  <NavLink
-                    to="/consultation"
-                    className={`inline-block w-full py-3 px-6 text-center font-bold rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 text-gray-900 transition-all duration-300`}
-                  >
-                    Book Now
-                  </NavLink>
-                </motion.div>
+              {/* Package Header */}
+              <div className="mb-8">
+                <FaCarSide className="text-3xl text-blue-900 mb-4" />
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  {offer.title}
+                </h2>
+                <div className="flex items-baseline">
+                  <span className="text-4xl font-extrabold text-gray-900">
+                    {offer.price}
+                  </span>
+                  <span className="ml-2 text-gray-600">/service</span>
+                </div>
               </div>
-            </motion.div>
+
+              {/* Features List */}
+              <ul className="space-y-4 mb-12">
+                {offer.features.map((feature, fIndex) => (
+                  <li
+                    key={fIndex}
+                    className="flex items-center text-gray-600"
+                  >
+                    <FaCheck className="flex-shrink-0 text-green-500 mr-3" />
+                    <span className="text-base">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Button */}
+              <Link
+                to="/consultation"
+                className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-colors duration-200"
+              >
+                Choose Plan
+              </Link>
+            </div>
           ))}
         </div>
-      </motion.div>
-    </div>
-  );
-};
 
-export default Offers;
+        {/* Additional Info */}
+        <div className="mt-16 text-center text-gray-600">
+          <p className="text-sm">
+            All packages include free 30-day warranty • 24/7 support • GST included
+          </p>
+          <div className="mt-6 flex items-center justify-center space-x-4">
+            <FaCheck className="text-green-500" />
+            <span className="text-sm">100% Satisfaction Guarantee</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

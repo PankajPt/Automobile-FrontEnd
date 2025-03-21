@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
-import { bodyRepair, insuranceService, mechJob, periodicM, vas} from '../../assets/index.assets.js';
+import { bodyRepair, insuranceService, mechJob, periodicM, vas } from '../../assets/index.assets.js';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { FaShieldAlt, FaCertificate } from 'react-icons/fa';
 import './services.css'
+
 
 const Services = () => {
   const services = [
@@ -38,17 +40,30 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="max-w-7xl mx-auto"
       >
-        <h1 className="text-4xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-          Our Toyota Services
-        </h1>
+        {/* Header with Trust Badges */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
+            Our Toyota Services
+          </h1>
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="flex items-center gap-2 bg-white px-6 py-2 rounded-full shadow-sm border border-gray-200">
+              <FaShieldAlt className="text-orange-600" />
+              <span className="text-sm font-medium text-gray-700">2-Year Warranty</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-6 py-2 rounded-full shadow-sm border border-gray-200">
+              <FaCertificate className="text-blue-600" />
+              <span className="text-sm font-medium text-gray-700">Certified Experts</span>
+            </div>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -56,7 +71,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border-2 border-gray-700 hover:border-cyan-400 transition-all duration-500"
+              className="group relative overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-orange-400 transition-all duration-500 bg-white"
             >
               <div className="flex flex-col md:flex-row h-full">
                 <div className="relative md:w-1/2 overflow-hidden">
@@ -65,21 +80,18 @@ const Services = () => {
                     alt={service.title}
                     className="w-full h-64 md:h-full object-cover transform group-hover:scale-105 transition-all duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
-                  {/* <div className="absolute top-4 left-4 text-4xl bg-gray-900/80 p-3 rounded-full">
-                    {service.icon}
-                  </div> */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
                 </div>
 
-                <div className="md:w-1/2 p-6 md:p-8 bg-gradient-to-br from-gray-800 to-gray-900">
-                  <h2 className="text-2xl font-bold text-cyan-400 mb-4 flex items-center">
+                <div className="md:w-1/2 p-6 md:p-8 bg-white">
+                  <h2 className="text-2xl font-bold text-blue-900 mb-4 flex items-center">
                     {service.title}
-                    <ChevronRightIcon className="w-6 h-6 ml-2 text-purple-400 group-hover:translate-x-2 transition-transform" />
+                    <ChevronRightIcon className="w-6 h-6 ml-2 text-orange-600 group-hover:translate-x-2 transition-transform" />
                   </h2>
-                  <p className="text-gray-300 leading-relaxed mb-6">
+                  <p className="text-gray-600 leading-relaxed mb-6">
                     {service.description}
                   </p>
-                  <button className="flex items-center text-purple-400 hover:text-cyan-400 transition-colors">
+                  <button className="flex items-center text-orange-600 hover:text-orange-700 transition-colors font-medium">
                     Learn More
                     <ChevronRightIcon className="w-4 h-4 ml-2" />
                   </button>
@@ -87,8 +99,8 @@ const Services = () => {
               </div>
 
               {/* Hover Glow Effect */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="absolute inset-0 bg-cyan-400/10 animate-pulse"></div>
+              <div className="absolute inset-0 rounded-2xl border-2 border-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute inset-0 bg-orange-400/10 animate-pulse"></div>
               </div>
             </motion.div>
           ))}

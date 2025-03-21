@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 
@@ -20,6 +20,7 @@ const Header = () => {
       className="sticky top-0 bg-gray-900 shadow-lg shadow-cyan-500/10 z-50"
     >
       <nav className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+        {/* Logo Section */}
         <NavLink 
           to="/" 
           className="flex items-center gap-2 sm:gap-3 group"
@@ -43,6 +44,7 @@ const Header = () => {
             SP AUTOMOBILE
           </span>
         </NavLink>
+
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">

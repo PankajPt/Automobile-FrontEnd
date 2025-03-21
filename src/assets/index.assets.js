@@ -27,6 +27,18 @@ import yaris from './yaris.jpg'
 import rumion from './rumion.webp'
 import corollaaltis from './corollaaltis.jpg'
 import toyotaallcars from './toyotaallcars.webp'
+import repairProcess from './repairProcess.jpg'
+import gallery1 from './gallery1.jpg'
+import gallery2 from './gallery2.jpg'
+import gallery3 from './gallery3.jpg'
+import gallery4 from './gallery4.jpg'
+import gallery5 from './gallery5.jpg'
+import gallery6 from './gallery6.jpg'
+import combo1 from './combo1.webp'
+import combo2 from './combo2.webp'
+import combo3 from './combo3.webp'
 
-export { logo, car1, car2, car3, car4, car5, car6, toyotaLogo, bodyRepair, insuranceService, mechJob, periodicM, vas, aboutImg, camry, fortuner, glanza, hilux, innovacrysta, innovahycross, landcruiser, urbanch, urbanct, vellfire, etios, yaris, rumion, corollaaltis, toyotaallcars}
+
+
+export { logo, car1, car2, car3, car4, car5, car6, toyotaLogo, bodyRepair, insuranceService, mechJob, periodicM, vas, aboutImg, camry, fortuner, glanza, hilux, innovacrysta, innovahycross, landcruiser, urbanch, urbanct, vellfire, etios, yaris, rumion, corollaaltis, toyotaallcars, repairProcess, gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, combo1,combo2, combo3}
 
