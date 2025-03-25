@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiCheckCircle, FiAlertCircle, FiChevronDown } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import fetchData from '../../services/api.services.js';
 
 const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
   
@@ -11,6 +12,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
     address: '',
     message: '',
     agree: false,
+    model: ''
   });
   const [errors, setErrors] = useState({});
   const [submissionStatus, setSubmissionStatus] = useState(null);
@@ -18,6 +20,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
   const handleModelSelect = (e) => {
     const selected = models.find(m => m.name === e.target.value);
     setSelectedModel(selected);
+    setFormData({...formData, model: selected.name})
   };
 
   const handleSubmit = async (e) => {
@@ -25,18 +28,14 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
     setSubmissionStatus('submitting');
     
     try {
-      const response = await fetch('/api/enquiry', {
+      const options = {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          model: selectedModel?.name
-        })
-      });
-
-      if (response.ok) {
+        data: formData,
+        file: null,
+        isBinary: false
+    };
+      const response = await fetchData('/users/submit-form', options)
+      if (response.success) {
         setSubmissionStatus('success');
         setFormData({
           name: '',
