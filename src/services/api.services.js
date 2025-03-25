@@ -1,4 +1,3 @@
-
 const BASE_URL = import.meta.env.VITE_BACKEND_BASE_URI;
 
 const fetchData = async(endpoint, {method = 'GET', data = null, file = null, isBinary = false} = {})=>{

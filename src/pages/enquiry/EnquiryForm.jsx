@@ -12,7 +12,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
     address: '',
     message: '',
     agree: false,
-    model: ''
+    model: null
   });
   const [errors, setErrors] = useState({});
   const [submissionStatus, setSubmissionStatus] = useState(null);
@@ -43,7 +43,8 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           email: '',
           address: '',
           message: '',
-          agree: false
+          agree: false,
+          model: null
         });
         setSelectedModel(null);
       } else {
