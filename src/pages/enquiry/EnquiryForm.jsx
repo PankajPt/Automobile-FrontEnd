@@ -6,11 +6,11 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
   
   const [formData, setFormData] = useState({
     name: '',
-    mobileNo: '',
+    phone: '',
     email: '',
     address: '',
     message: '',
-    agree: false
+    agree: false,
   });
   const [errors, setErrors] = useState({});
   const [submissionStatus, setSubmissionStatus] = useState(null);
@@ -32,7 +32,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
         },
         body: JSON.stringify({
           ...formData,
-          carModel: selectedModel?.name
+          model: selectedModel?.name
         })
       });
 
@@ -40,7 +40,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
         setSubmissionStatus('success');
         setFormData({
           name: '',
-          mobileNo: '',
+          phone: '',
           email: '',
           address: '',
           message: '',
@@ -91,8 +91,8 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           type="tel"
           placeholder="Mobile Number *"
           className="w-full bg-gray-800 rounded-lg border border-gray-700 p-3 text-gray-300"
-          value={formData.mobileNo}
-          onChange={(e) => setFormData({...formData, mobileNo: e.target.value})}
+          value={formData.phone}
+          onChange={(e) => setFormData({...formData, phone: e.target.value})}
           required
         />
         <input
