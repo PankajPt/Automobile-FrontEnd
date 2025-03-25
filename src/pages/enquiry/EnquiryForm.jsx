@@ -34,7 +34,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
         file: null,
         isBinary: false
     };
-      const response = await fetchData('/users/submit-form', options)
+      const response = await fetchData('users/submit-form', options)
       if (response.success) {
         setSubmissionStatus('success');
         setFormData({
