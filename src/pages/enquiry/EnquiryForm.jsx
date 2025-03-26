@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import fetchData from '../../services/api.services.js';
 
 const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
-  
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -14,7 +13,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
     agree: false,
     model: null
   });
-  const [errors, setErrors] = useState({});
+  
   const [submissionStatus, setSubmissionStatus] = useState(null);
 
   const handleModelSelect = (e) => {
@@ -33,7 +32,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
         data: formData,
         file: null,
         isBinary: false
-    };
+      };
       const response = await fetchData('users/submit-form', options)
       if (response.success) {
         setSubmissionStatus('success');
@@ -47,14 +46,18 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           model: null
         });
         setSelectedModel(null);
-        toast.success('Thank you for your enquiry. We have received your request and will get back to you soon !!!')
+        toast.success('Thank you for your enquiry. We have received your request and will get back to you soon !!!', { icon: <FiCheckCircle className="text-2xl mr-2" /> })
       } else {
         setSubmissionStatus('error');
-        toast.error(`Something went wrong while sending enquiry form. Please try again.`)
+        toast.error(`Something went wrong while sending enquiry form. Please try again.`,{
+          icon: <FiAlertCircle className="text-2xl mr-2" />
+        })
       }
     } catch (error) {
       setSubmissionStatus('error');
-      toast.error(`Something went wrong while sending enquiry form. Please try again.`)
+      toast.error(`Something went wrong while sending enquiry form. Please try again.`, {
+        icon: <FiAlertCircle className="text-2xl mr-2" />
+      })
     }
   };
 
@@ -70,6 +73,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
             value={selectedModel?.name || ''}
             onChange={handleModelSelect}
             required
+            disabled={submissionStatus === 'submitting'}
           >
             <option value="">-- Select Model --</option>
             {models.map((model) => (
@@ -89,6 +93,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           value={formData.name}
           onChange={(e) => setFormData({...formData, name: e.target.value})}
           required
+          disabled={submissionStatus === 'submitting'}
         />
         <input
           type="tel"
@@ -97,6 +102,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           value={formData.phone}
           onChange={(e) => setFormData({...formData, phone: e.target.value})}
           required
+          disabled={submissionStatus === 'submitting'}
         />
         <input
           type="email"
@@ -105,28 +111,43 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           value={formData.email}
           onChange={(e) => setFormData({...formData, email: e.target.value})}
           required
+          disabled={submissionStatus === 'submitting'}
         />
         <input
           type="text"
           placeholder="Address (Optional)"
-                className="w-full bg-gray-800 rounded-lg border border-gray-700 p-3 text-gray-300 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50"
-                value={formData.address}
-                onChange={(e) => setFormData({...formData, address: e.target.value})}
-              />
+          className="w-full bg-gray-800 rounded-lg border border-gray-700 p-3 text-gray-300 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/50"
+          value={formData.address}
+          onChange={(e) => setFormData({...formData, address: e.target.value})}
+          disabled={submissionStatus === 'submitting'}
+        />
         <textarea
           placeholder="Message (Optional)"
           className="w-full bg-gray-800 rounded-lg border border-gray-700 p-3 text-gray-300"
           rows="4"
           value={formData.message}
           onChange={(e) => setFormData({...formData, message: e.target.value})}
+          disabled={submissionStatus === 'submitting'}
         />
       </div>
 
       <button
         type="submit"
-        className="w-full py-4 px-8 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-gray-900 font-bold rounded-xl"
+        disabled={submissionStatus === 'submitting'}
+        className={`w-full py-4 px-8 bg-gradient-to-r from-cyan-500 to-purple-500 text-gray-900 font-bold rounded-xl transition-opacity ${
+          submissionStatus === 'submitting' 
+            ? 'opacity-70 cursor-not-allowed' 
+            : 'hover:from-cyan-400 hover:to-purple-400'
+        }`}
       >
-        Submit Enquiry
+        {submissionStatus === 'submitting' ? (
+          <div className="flex items-center justify-center gap-2">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+            Submitting...
+          </div>
+        ) : (
+          'Submit Enquiry'
+        )}
       </button>
     </form>
   );
