@@ -47,7 +47,7 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           model: null
         });
         setSelectedModel(null);
-        toast.success()
+        toast.success('Thank you for your enquiry. We have received your request and will get back to you soon !!!')
       } else {
         setSubmissionStatus('error');
         toast.error(`Something went wrong while sending enquiry form. Please try again.`)
