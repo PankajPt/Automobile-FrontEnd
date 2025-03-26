@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FiCheckCircle, FiAlertCircle, FiChevronDown } from 'react-icons/fi';
-import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 import fetchData from '../../services/api.services.js';
 
 const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
@@ -47,11 +47,14 @@ const EnquiryForm = ({ models, selectedModel, setSelectedModel }) => {
           model: null
         });
         setSelectedModel(null);
+        toast.success()
       } else {
         setSubmissionStatus('error');
+        toast.error(`Something went wrong while sending enquiry form. Please try again.`)
       }
     } catch (error) {
       setSubmissionStatus('error');
+      toast.error(`Something went wrong while sending enquiry form. Please try again.`)
     }
   };
 

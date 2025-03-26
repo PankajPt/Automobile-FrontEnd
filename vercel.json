@@ -1,5 +1,9 @@
 {
     "rewrites": [
-      { "source": "/consultation", "destination": "/" }
+      { "source": "/consultation", "destination": "/" },
+      { "source": "/offers", "destination": "/" },
+      { "source": "/services", "destination": "/" },
+      { "source": "/packages", "destination": "/" },
+      { "source": "/about", "destination": "/" }
     ]
   }
