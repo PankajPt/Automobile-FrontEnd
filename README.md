@@ -52,23 +52,51 @@ npm run dev
 ## 🗂️ Folder Structure
 
 ```
-sp-automobile-frontend/
-├── public/                  # Static assets
-│   └── favicon.ico
+Automobile-frontend/
+├── public/
+│   └── logo.png
 ├── src/
-│   ├── components/          # Reusable UI components
-│   │   └── BookingForm.jsx
-│   ├── pages/               # Page-level components
-│   │   └── Home.jsx
-│   ├── App.jsx              # Root component
-│   ├── main.jsx             # Entry point
-│   └── index.css            # Tailwind base styles
-├── .env                     # Environment variables
-├── index.html               # App root HTML
-├── tailwind.config.js       # Tailwind configuration
-├── postcss.config.js        # PostCSS config
-├── vite.config.js           # Vite configuration
-└── package.json             # Project metadata and scripts
+│   ├── assets/
+│   ├── components/
+│   │   ├── footer/
+│   │   │   └── Footer.jsx
+│   │   └── header/
+│   │       └── Header.jsx
+│   ├── pages/
+│   │   ├── about/
+│   │   │   ├── About.jsx
+│   │   │   └── about.css
+│   │   ├── enquiry/
+│   │   │   ├── EnquiryForm.jsx
+│   │   │   └── EnquiryPage.jsx
+│   │   ├── home/
+│   │   │   ├── Home.jsx
+│   │   │   └── home.css
+│   │   ├── offers/
+│   │   │   └── Offers.jsx
+│   │   ├── packages/
+│   │   │   └── Packages.jsx
+│   │   └── services/
+│   │       ├── Services.jsx
+│   │       └── services.css
+│   ├── services/
+│   │   └── api.services.js
+│   ├── App.css
+│   ├── App.jsx
+│   ├── Layout.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vercel.json
+├── vite.config.js
+
 ```
 
 ## 📥 Dependencies
